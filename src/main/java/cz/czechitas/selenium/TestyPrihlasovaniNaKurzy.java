@@ -23,6 +23,10 @@ public class TestyPrihlasovaniNaKurzy {
         WebElement password = prohlizec.findElement(By.xpath("//input [@id = 'password']"));
         password.sendKeys(heslo);
     }
+    private void vyplnPrihlasovaciEmail(String emailovaAdresa) {
+        WebElement password = prohlizec.findElement(By.xpath("//input [@id = 'email']"));
+        password.sendKeys(emailovaAdresa);
+    }
     @AfterEach
     public void tearDown() {
         prohlizec.quit();
