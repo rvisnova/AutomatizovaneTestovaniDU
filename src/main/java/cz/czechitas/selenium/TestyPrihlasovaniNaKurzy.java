@@ -20,6 +20,19 @@ public class TestyPrihlasovaniNaKurzy {
         prohlizec = new FirefoxDriver();
         prohlizec.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
+    @Test
+    public void registrovanyRodicMusiBytSchopenSePrihlasit() {
+        otevriPrihlasovaciStranku();
+        klikniNaTlacitko("//a [contains(@href, 'prihlaseni')]");
+
+        vyplnPrihlasovaciUdaje();
+        klikniNaTlacitko("//button [contains(@class, 'btn-primary')]");
+
+        WebElement potvrzeniPrihlaseni = prohlizec.findElement(By.xpath("//h1[contains (text(), Prihlášky)]"));
+        Assertions.assertNotNull(potvrzeniPrihlaseni);
+        System.out.println("Prihlaseni bylo uspesne");
+
+    }
     private void vyplnPrihlasovaciUdaje() {
         vyplnPrihlasovaciEmail(EMAILOVA_ADRESA);
         vyplnHeslo(HESLO);
