@@ -19,7 +19,10 @@ public class TestyPrihlasovaniNaKurzy {
         prohlizec = new FirefoxDriver();
         prohlizec.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
-
+    private void vyplnHeslo(String heslo) {
+        WebElement password = prohlizec.findElement(By.xpath("//input [@id = 'password']"));
+        password.sendKeys(heslo);
+    }
     @AfterEach
     public void tearDown() {
         prohlizec.quit();
