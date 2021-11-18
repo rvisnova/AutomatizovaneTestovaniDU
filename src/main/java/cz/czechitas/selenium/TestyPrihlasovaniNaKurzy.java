@@ -32,6 +32,10 @@ public class TestyPrihlasovaniNaKurzy {
                 (By.xpath(identifikacePole));
         vyplnovaciPoleTermin.sendKeys(textKVyplneni);
     }
+    private void klikniNaTlacitko(String identifikaceTlacitka) {
+        WebElement tlacitko = prohlizec.findElement(By.xpath(identifikaceTlacitka));
+        tlacitko.click();
+    }
     @AfterEach
     public void tearDown() {
         prohlizec.quit();
