@@ -59,6 +59,36 @@ public class TestyPrihlasovaniNaKurzy {
         Assertions.assertNotNull(seznamPrihlasek);
 
     }
+
+    @Test
+    public void rodicMusiBytSchopenSePrihlasitVybratKurzAPrihlasitDite(){
+
+        otevriPrihlasovaciStranku();
+        klikniNaTlacitko("//a [contains(@href, 'prihlaseni')]");
+
+        vyplnPrihlasovaciUdaje();
+        klikniNaTlacitko("//button [contains(@class, 'btn-primary')]");
+
+        klikniNaTlacitko("//a [contains(@class, 'btn') and contains(@href, 'pridat')]");
+
+        klikniNaTlacitko("//a [contains(@href, 'trimesicni-kurzy-webu')]");
+        klikniNaTlacitko("//a [contains (@class, 'btn') and contains (text(),'Vytvořit přihlášku')]");
+
+        klikniNaTlacitko("//div [contains(text(), 'termín')]");
+        vyplnPole("//div/input [@class='form-control']", "0" + "\n");
+
+        vyplnPole("//input [@id='forename']", "Ivanka");
+        vyplnPole("//input [@id='surname']", "Maderova");
+        vyplnPole("//input [@id='birthday']", "1.1.2010");
+
+        klikniNaTlacitko("//label [@for = 'payment_transfer']");
+        klikniNaTlacitko("//label [@for = 'terms_conditions']");
+        klikniNaTlacitko("//input [@value= 'Vytvořit přihlášku']");
+
+        WebElement seznamPrihlasek = prohlizec.findElement
+                (By.xpath("//h1 [contains(text(), 'Ivanka Maderova')]"));
+        Assertions.assertNotNull(seznamPrihlasek);
+    }
     private void vyplnPrihlasovaciUdaje() {
         vyplnPrihlasovaciEmail(EMAILOVA_ADRESA);
         vyplnHeslo(HESLO);
