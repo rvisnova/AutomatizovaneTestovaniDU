@@ -89,6 +89,21 @@ public class TestyPrihlasovaniNaKurzy {
                 (By.xpath("//h1 [contains(text(), 'Ivanka Maderova')]"));
         Assertions.assertNotNull(seznamPrihlasek);
     }
+    @Test
+    public void prihlasenyRodisMusiBytSchopenSeOdhlasit(){
+        otevriPrihlasovaciStranku();
+        klikniNaTlacitko("//a [contains(@href, 'prihlaseni')]");
+
+        vyplnPrihlasovaciUdaje();
+        klikniNaTlacitko("//button [contains(@class, 'btn-primary')]");
+
+        klikniNaTlacitko("//a [@class= 'dropdown-toggle']");
+        klikniNaTlacitko("//a [@id='logout-link']");
+
+        WebElement overeniHlavniStranky = prohlizec.findElement
+                (By.xpath("//h1 [contains(text(), 'Vyberte období akce')]"));
+        Assertions.assertNotNull(overeniHlavniStranky);
+    }
     private void vyplnPrihlasovaciUdaje() {
         vyplnPrihlasovaciEmail(EMAILOVA_ADRESA);
         vyplnHeslo(HESLO);
