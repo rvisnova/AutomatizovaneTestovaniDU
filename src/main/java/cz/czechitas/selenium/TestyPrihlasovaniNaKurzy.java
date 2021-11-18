@@ -36,6 +36,9 @@ public class TestyPrihlasovaniNaKurzy {
         WebElement tlacitko = prohlizec.findElement(By.xpath(identifikaceTlacitka));
         tlacitko.click();
     }
+    private void otevriPrihlasovaciStranku() {
+        prohlizec.navigate().to("https://cz-test-jedna.herokuapp.com/");
+    }
     @AfterEach
     public void tearDown() {
         prohlizec.quit();
