@@ -10,7 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 
 public class TestyPrihlasovaniNaKurzy {
-
+    public static final String EMAILOVA_ADRESA = "antonin.madera@email.com";
+    public static final String HESLO = "Heslotonda1";
     WebDriver prohlizec;
 
     @BeforeEach
