@@ -27,6 +27,11 @@ public class TestyPrihlasovaniNaKurzy {
         WebElement password = prohlizec.findElement(By.xpath("//input [@id = 'email']"));
         password.sendKeys(emailovaAdresa);
     }
+    private void vyplnPole(String identifikacePole, String textKVyplneni) {
+        WebElement vyplnovaciPoleTermin = prohlizec.findElement
+                (By.xpath(identifikacePole));
+        vyplnovaciPoleTermin.sendKeys(textKVyplneni);
+    }
     @AfterEach
     public void tearDown() {
         prohlizec.quit();
